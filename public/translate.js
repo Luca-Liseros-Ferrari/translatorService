@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // handler
   selectLang.addEventListener("change", changeHandler);
 
-  let allElements = document.querySelectorAll("*:not(:empty)");
+  let allElements = document.querySelectorAll("body > * ");
   console.log(allElements);
 
   // Oggetto per memorizzare le traduzioni
