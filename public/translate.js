@@ -8,11 +8,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // handler
   selectLang.addEventListener("change", changeHandler);
 
-  let allElements = document.querySelectorAll("body > * ");
+  let allElements = document.querySelectorAll("p");
+
+
   console.log(allElements);
 
+  // Funzione per salvare le traduzioni nel localStorage
+function saveTranslationToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+// Funzione per caricare le traduzioni dal localStorage
+function loadTranslationFromLocalStorage(key) {
+  const value = localStorage.getItem(key);
+  return value ? JSON.parse(value) : null;
+}
+
   // Oggetto per memorizzare le traduzioni
-  let translations = {};
+  let translations = loadTranslationFromLocalStorage('translations') || {};
 
   async function changeHandler(e) {
     let targetLanguage;
@@ -80,5 +93,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
       traverseNodes(element);
     });
     */
+    // Salva le traduzioni nel localStorage dopo aver tradotto tutti gli elementi
+    saveTranslationToLocalStorage('translations', translations);
   }
+
 });
