@@ -1,3 +1,10 @@
+// ESM
+
+// import express from 'express'
+// import translate from 'google-translate-api-jp';
+// import path from 'path';
+
+// CJS 
 const express = require("express");
 const translate = require('translate-google');
 const path = require("path");

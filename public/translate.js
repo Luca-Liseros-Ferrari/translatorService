@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // handler
   selectLang.addEventListener("change", changeHandler);
 
-  let allElements = document.querySelectorAll("p");
+  let allElements = document.querySelectorAll("p, i");
 
 
   console.log(allElements);
@@ -55,9 +55,7 @@ function loadTranslationFromLocalStorage(key) {
         return;
       }
       fetch(
-        `http://localhost:3000/translate?text=${encodeURIComponent(
-          textNode.nodeValue
-        )}&target=${encodeURIComponent(targetLanguage)}`
+        `http://localhost:3000/translate?text=${textNode.nodeValue}&target=${targetLanguage}`
       )
         .then((response) => response.json())
         .then((data) => {
